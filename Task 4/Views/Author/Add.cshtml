@@ -1,0 +1,44 @@
+﻿@model Author
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="form-location"><div></div>
+    <form method="post" asp-action="Add">
+        <div class="card border-light border mt-4">
+            <div class="mb-3 p-3 row">
+                <div class="row pb-2">
+                    <h2 class="text-black text-primary text-center">Новий автор</h2>
+                    <hr style="color:whitesmoke" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SurName">Прізвище</label>
+                    <input asp-for="SurName" class="form-control" />
+                    <span asp-validation-for="SurName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name">Ім`я</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PaternalName">По батькові</label>
+                    <input asp-for="PaternalName" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DateOfBirth" class="form-label">Дата народження</label>
+                    <input type="date" data-val="true" asp-for="DateOfBirth" class="form-control bg-secondary" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="justify-content-end">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" style="width:183px">Створити</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <a asp-controller="Author" asp-action="Index" class="btn btn-primary" style="width:183px">Повернутись</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form><div></div>
+</div>
+

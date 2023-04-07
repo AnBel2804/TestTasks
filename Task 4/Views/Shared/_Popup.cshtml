@@ -1,0 +1,42 @@
+﻿@model Book
+<div id="add-book" class="popup">
+    <div class="popup-body">
+        <div class="popup-content">
+            <a href="#" class="popup-close">x</a>
+            <div class="popup-title">
+                Нова книга
+            </div>
+            <div class="popup-text">
+                <form method="post" asp-action="Add">
+                    <div class="card border-light border mt-4">
+                        <div class="mb-3 p-3 row">
+                            <div class="row pb-2">
+                                <h2 class="text-black text-primary text-center">Новий автор</h2>
+                                <hr style="color:whitesmoke" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Title">Назва</label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Genre">Жанр</label>
+                                <input asp-for="Genre" class="form-control" />
+                                <span asp-validation-for="Genre" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="NumberOfPages">Кількість сторінок</label>
+                                <input asp-for="NumberOfPages" class="form-control" />
+                            </div>
+                            <div class="justify-content-end">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary" style="width:183px">Створити</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

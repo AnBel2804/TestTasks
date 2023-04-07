@@ -1,0 +1,45 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="form-location">
+    <div></div>
+    <form method="post" asp-action="Edit">
+        <div class="card border-light border mt-4">
+            <div class="mb-3 p-3 row">
+                <div class="row pb-2">
+                    <h2 class="text-black text-primary text-center">Редагування книги</h2>
+                    <hr style="color:whitesmoke" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Title">Назва</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Genre">Жанр</label>
+                    <select asp-for="Genre" asp-items="ViewBag.GenreList" class="form-select"></select>
+                    <span asp-validation-for="Genre" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="NumberOfPages">Кількість сторінок</label>
+                    <input asp-for="NumberOfPages" class="form-control" />
+                    <span asp-validation-for="NumberOfPages" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Author.Id">Автор</label>
+                    <input asp-for="Author.Id" value="@Model.Author.Id" class="form-control" />
+                    <span asp-validation-for="Author.Id" class="text-danger"></span>
+                </div>
+                <div class="justify-content-end">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" style="width:183px">Зберегти</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <a asp-controller="Author" asp-action="Index" class="btn btn-primary" style="width:183px">Повернутись</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form><div></div>
+</div>

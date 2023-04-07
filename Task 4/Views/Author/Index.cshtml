@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Author>
+<div class="table-sections">
+    <div>
+        <a asp-controller="Author" asp-action="Add">Add Author</a>
+    </div><div></div><div></div><div></div><div></div>
+</div>
+<div class="table-sections">
+    <div><strong>Автори</strong></div>
+    <div><strong>Книг в базі</strong></div><div><div><div></div></div></div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="table-sections">
+        <div class="section">@item.SurName @item.Name</div>
+        <div class="section">@item.Books.Count()</div>
+        <div class="section" style="text-align:center">
+            <a asp-controller="Author" asp-action="Edit" asp-route-id="@item.Id">Редагувати</a>
+        </div>
+        <div class="section" style="text-align:center">
+            <a asp-controller="Author" asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+        </div>
+        <div class="section" style="text-align:center">
+            <a asp-controller="Author" asp-action="Info" asp-route-id="@item.Id">Детальніше</a>
+        </div>
+    </div>
+}

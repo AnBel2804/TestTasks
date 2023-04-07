@@ -1,0 +1,97 @@
+﻿@model Author
+@{
+    ViewData["Title"] = "Info";
+}
+
+<div class="mb-3">
+    <label asp-for="SurName">Прізвище</label>
+    <input asp-for="SurName" disabled class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Name">Ім`я</label>
+    <input asp-for="Name" disabled class="form-control" />
+</div>
+@if (Model.PaternalName != null)
+{
+    <div class="mb-3">
+        <label asp-for="PaternalName">По батькові</label>
+        <input asp-for="PaternalName" disabled class="form-control" />
+    </div>
+}
+<br />
+<div class="book-title-location">
+    <div><h3>Книги</h3></div>
+    <div></div>
+    <div><a href="#add-book">Додати книгу</a></div>
+</div>
+<hr />
+<div class="books-location">
+    @foreach (var item in Model.Books)
+    {
+        <div class="block">
+            <div class="block-text">
+                <div class="block-text-section">
+                    <div><strong>Назва:</strong></div>
+                    <div>@item.Title</div>
+                </div>
+                <div class="block-text-section">
+                    <div><strong>Жанр:</strong></div>
+                    <div>@item.Genre</div>
+                </div>
+                <div class="block-text-section">
+                    <div><strong>Кількість сторінок:</strong></div>
+                    <div>@item.NumberOfPages</div>
+                </div>
+            </div>
+            <div class="block-link">
+                <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.Id">Редагувати</a>
+                <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+            </div>
+        </div>
+    }
+</div>
+
+<div id="add-book" class="popup">
+    <div class="popup-body">
+        <div class="popup-content">
+            <div class="popup-title">
+                Нова книга
+            </div>
+            <div class="popup-text">
+                <form method="post" asp-controller="Book" asp-action="Add">
+                    <div class="card border-light border mt-4">
+                        <div class="mb-3 p-3 row">
+                            <div class="row pb-2">
+                                <h2 class="text-black text-primary text-center">Нова книга</h2>
+                                <hr style="color:whitesmoke" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Назва</label>
+                                <input name="Title" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Жанр</label>
+                                <select asp-items="ViewBag.GenreList" name="Genre" class="form-select"></select>
+                            </div>
+                            <div class="mb-3">
+                                <label>Кількість сторінок</label>
+                                <input name="NumberOfPages" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Автор</label>
+                                <input name="Author" value="@Model.Id" class="form-control" />
+                            </div>
+                            <div class="justify-content-end">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary" style="width:183px">Створити</button>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="btn btn-primary" style="width:183px">Повернутись</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
